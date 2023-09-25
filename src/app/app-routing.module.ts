@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: AllMoviesComponent },
   { path: 'movie/:id', component: MovieDetailsComponent },
-  { path: 'whishlist', component: WishlistPageComponent },
+  { path: 'wishlist', component: WishlistPageComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', component: NotFoundComponent },
 ];

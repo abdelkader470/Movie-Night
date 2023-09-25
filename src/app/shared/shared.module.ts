@@ -3,10 +3,21 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, NotFoundComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    SearchComponent,
+  ],
   imports: [CommonModule],
-  exports: [FooterComponent, HeaderComponent, NotFoundComponent],
+  exports: [
+    FooterComponent,
+    HeaderComponent,
+    NotFoundComponent,
+    SearchComponent,
+  ],
 })
 export class SharedModule {}

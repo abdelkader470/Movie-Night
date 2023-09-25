@@ -4,6 +4,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SearchComponent } from './search/search.component';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { SearchComponent } from './search/search.component';
     NotFoundComponent,
     SearchComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   exports: [
     FooterComponent,
     HeaderComponent,

@@ -10,6 +10,7 @@ export class MovieCardComponent {
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
   @Input() movie: any;
   progress: any;
+  inWatchlist = false;
   constructor(private _router: Router) {}
 
   ngOnInit() {
@@ -18,5 +19,9 @@ export class MovieCardComponent {
 
   routingToDetails(id: number) {
     this._router.navigate(['movie', id]);
+  }
+  addToWatchList(movie: any) {
+    this.inWatchlist = !this.inWatchlist;
+    console.log(this.inWatchlist);
   }
 }

@@ -56,10 +56,22 @@
       [innerStrokeWidth]="0"
       [outerStrokeColor]="'yellow'"
     ></circle-progress>
-
-    <h2 class="title">
-      <a (click)="routingToDetails(movie.id)">{{ movie.original_title }}</a>
-    </h2>
-    <div class="release-date">{{ movie.release_date | date }}</div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="right-content">
+        <h2 class="title">
+          <a (click)="routingToDetails(movie.id)">{{ movie.original_title }}</a>
+        </h2>
+        <div class="release-date">{{ movie.release_date | date }}</div>
+      </div>
+      <div class="left-content">
+        <i
+          class="fa fa-heart"
+          (click)="addToWatchList(movie)"
+          [ngStyle]="{
+            color: inWatchlist ? '#f5c518' : '#000000'
+          }"
+        ></i>
+      </div>
+    </div>
   </div>
 </div>

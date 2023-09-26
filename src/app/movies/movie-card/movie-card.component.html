@@ -1,1 +1,65 @@
-<p>movie-card works!</p>
+<div class="card">
+  <div class="drop-downlist">
+    <div class="drop-down d-flex justify-content-center align-items-center">
+      <i class="fa-solid fa-ellipsis" style="color: #000000"></i>
+    </div>
+    <div class="list">
+      <ul class="d-flex flex-column justify-content-center align-items-center">
+        <li class="my-1">
+          <a href=""> </a>
+          <i class="fa-solid fa-list" style="color: #000000"></i
+          ><span class="ms-2">Add to list</span>
+        </li>
+        <li class="my-1">
+          <i class="fa-solid fa-heart" style="color: #000000"></i
+          ><span class="ms-2">Favorite</span>
+        </li>
+        <li class="my-1">
+          <i class="fa-solid fa-bookmark" style="color: #000000"></i
+          ><span class="ms-2">Wishlist</span>
+        </li>
+        <li class="my-1">
+          <i class="fa-solid fa-star" style="color: #000000"></i
+          ><span class="ms-2">Your rating</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <img
+    [src]="imgPrefex + movie.poster_path"
+    [alt]="movie.original_title"
+    (click)="routingToDetails(movie.id)"
+  />
+  <div class="card-content mt-3 mx-2">
+    <!-- I guess we can come up with abetter solution -->
+    <circle-progress
+      *ngIf="movie.vote_average >= 7.5"
+      [percent]="progress"
+      [radius]="10"
+      [outerStrokeWidth]="2"
+      [innerStrokeWidth]="0"
+      [outerStrokeColor]="'#78C000'"
+    ></circle-progress>
+    <circle-progress
+      *ngIf="movie.vote_average >= 5 && movie.vote_average < 7.5"
+      [percent]="progress"
+      [radius]="10"
+      [outerStrokeWidth]="2"
+      [innerStrokeWidth]="0"
+      [outerStrokeColor]="'yellow'"
+    ></circle-progress>
+    <circle-progress
+      *ngIf="movie.vote_average >= 0 && movie.vote_average < 5"
+      [percent]="progress"
+      [radius]="10"
+      [outerStrokeWidth]="2"
+      [innerStrokeWidth]="0"
+      [outerStrokeColor]="'yellow'"
+    ></circle-progress>
+
+    <h2 class="title">
+      <a (click)="routingToDetails(movie.id)">{{ movie.original_title }}</a>
+    </h2>
+    <div class="release-date">{{ movie.release_date | date }}</div>
+  </div>
+</div>

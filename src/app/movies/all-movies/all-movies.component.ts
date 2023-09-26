@@ -8,8 +8,10 @@ import { MoviesApiService } from '../services/movies-api.service';
 })
 export class AllMoviesComponent {
   constructor(private _movies: MoviesApiService) {}
-
+  allMovies: any[] = [];
   ngOnInit() {
-    this._movies.getMoviesList().subscribe((data) => console.log(data));
+    this._movies
+      .getMoviesList()
+      .subscribe((data: any) => (this.allMovies = data.results));
   }
 }

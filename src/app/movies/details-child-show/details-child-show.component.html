@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center" *ngIf="!movie">
+  <div class="spinner-border" role="status"></div>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="container mt-5" *ngIf="movie">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+      <div class="img">
+        <img
+          *ngIf="movie.poster_path"
+          [src]="imgPrefex + movie.poster_path"
+          [alt]="movie.title"
+          class="poster"
+        />
+        <img
+          *ngIf="!movie.poster_path"
+          src="../../../assets/images/image Place holder.png"
+          [alt]="movie.title"
+          class="poster"
+        />
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8">
+      <div class="details px-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="title">
+            <h2>{{ movie.title }}</h2>
+          </div>
+          <div class="inWatchlist">
+            <i
+              class="fa fa-heart fa-2x"
+              (click)="addToWatchList(movie)"
+              [ngStyle]="{
+                color: inWatchlist ? '#f5c518' : '#000000'
+              }"
+            ></i>
+          </div>
+        </div>
+        <div class="release-date">{{ movie.release_date | date }}</div>
+        <div class="rating d-flex my-3">
+          <div class="stars me-3">
+            <i
+              class="fa-regular fa-star"
+              style="color: #000000"
+              [ngClass]="{ 'fa-solid': movie.vote_average > 1 }"
+            ></i>
+            <i
+              class="fa-regular fa-star"
+              style="color: #000000"
+              [ngClass]="{ 'fa-solid': movie.vote_average > 3 }"
+            ></i>
+            <i
+              class="fa-regular fa-star"
+              style="color: #000000"
+              [ngClass]="{ 'fa-solid': movie.vote_average > 5 }"
+            ></i>
+            <i
+              class="fa-regular fa-star"
+              style="color: #000000"
+              [ngClass]="{ 'fa-solid': movie.vote_average > 7 }"
+            ></i>
+            <i
+              class="fa-regular fa-star"
+              style="color: #000000"
+              [ngClass]="{ 'fa-solid': movie.vote_average > 9 }"
+            ></i>
+          </div>
+          <div class="voters">
+            {{ movie.vote_count }}
+          </div>
+        </div>
+        <div class="description mb-2">{{ movie.overview }}</div>
+        <div class="badge p-0">
+          <span
+            class="badge text-bg-warning me-2 p-1"
+            *ngFor="let badge of movie.genres"
+            >{{ badge.name }}</span
+          >
+        </div>
+        <div class="duration-lang d-flex mt-3">
+          <div class="duration me-5">
+            <span class="me-2 fw-bold">Duration:</span>
+            <span>{{ movie.runtime }} </span>
+            <span>mins.</span>
+          </div>
+          <div class="lang">
+            <span class="me-2 fw-bold"> Languages: </span>
+            <span *ngFor="let lang of movie.spoken_languages" class="me-2">{{
+              lang.name
+            }}</span>
+          </div>
+        </div>
+        <div class="logo d-flex flex-wrap mt-3">
+          <div
+            class="col-sm-4 mb-4 d-flex justify-content-start align-items-center"
+            *ngFor="let logos of movie.production_companies"
+          >
+            <div *ngIf="logos.logo_path; then image; else text"></div>
+            <ng-template #image>
+              <img
+                [src]="imgPrefex + logos.logo_path"
+                [alt]="logos.name"
+                class="company-logo"
+              />
+            </ng-template>
+            <ng-template #text>
+              <div>{{ logos.name }}</div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div
+    class="d-flex justify-content-center"
+    *ngIf="recommendedMovies.length == 0"
+  >
+    <h2>No Recommendations</h2>
+  </div>
+  <div class="container" *ngIf="recommendedMovies.length > 0">
+    <h2>Recommendations</h2>
+    <div class="row">
+      <div
+        class="col-sm-4 col-md-2 gy-3"
+        *ngFor="let movie of recommendedMovies"
+      >
+        <app-movie-card [movie]="movie"> </app-movie-card>
+      </div>
+    </div>
+  </div>
+</div>

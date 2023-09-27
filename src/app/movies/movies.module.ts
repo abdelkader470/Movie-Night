@@ -4,9 +4,10 @@ import { AllMoviesComponent } from './all-movies/all-movies.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { DetailsChildShowComponent } from './details-child-show/details-child-show.component';
 
 @NgModule({
-  declarations: [AllMoviesComponent, MovieCardComponent, MovieDetailsComponent],
+  declarations: [AllMoviesComponent, MovieCardComponent, MovieDetailsComponent, DetailsChildShowComponent],
   imports: [
     CommonModule,
     NgCircleProgressModule.forRoot({

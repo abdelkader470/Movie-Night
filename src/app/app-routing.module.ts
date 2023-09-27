@@ -9,7 +9,10 @@ import { WishlistPageComponent } from './wishlist/wishlist-page/wishlist-page.co
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: AllMoviesComponent },
-  { path: 'movie/:id', component: MovieDetailsComponent },
+  {
+    path: 'movie/:id',
+    component: MovieDetailsComponent,
+  },
   { path: 'wishlist', component: WishlistPageComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', component: NotFoundComponent },

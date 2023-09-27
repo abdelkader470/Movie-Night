@@ -1,0 +1,22 @@
+.poster {
+  max-width: 300px;
+  border-radius: 30px;
+}
+.img {
+  max-width: 300px;
+}
+
+.release-date {
+  font-size: 0.6em;
+  font-family: Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.duration-lang {
+  font-size: 0.6em;
+  font-family: Arial, sans-serif;
+}
+
+.company-logo {
+  width: 50%;
+}

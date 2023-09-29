@@ -12,20 +12,7 @@
       *ngFor="let movie of trandingMovies | searchMovie : term"
       class="col-md-2"
     >
-      <div class="movie">
-        <a [routerLink]="['/movie', movie.id]">
-          <img
-            class="w-100 mb-2 border rounded-2"
-            [src]="prefixImg + movie.poster_path"
-            alt=""
-          />
-          <h3 class="h6">{{ movie.title }}</h3>
-        </a>
-
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <div class="release-date">{{ movie.release_date | date }}</div>
-        </div>
-      </div>
+      <app-movie-card [movie]="movie"> </app-movie-card>
     </div>
   </div>
   <div class="pagination d-flex justify-content-center mb-4">

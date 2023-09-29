@@ -8,6 +8,8 @@ import { RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SearchMoviePipe } from '../search-movie.pipe';
+import { MovieCardComponent } from '../movies/movie-card/movie-card.component';
+import { MoviesModule } from '../movies/movies.module';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -16,7 +18,13 @@ import { SearchMoviePipe } from '../search-movie.pipe';
     SearchComponent,
     SearchMoviePipe,
   ],
-  imports: [CommonModule, RouterLink, HttpClientModule, FormsModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    HttpClientModule,
+    FormsModule,
+    MoviesModule,
+  ],
   exports: [
     FooterComponent,
     HeaderComponent,

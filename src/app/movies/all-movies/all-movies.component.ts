@@ -12,7 +12,7 @@ export class AllMoviesComponent {
   pages: number[] = [];
   pageNumber: number = 1;
   maxPages: number = 15;
-  searchKey: string = 'Movie Name....';
+  searchKey: string = '';
   constructor(
     private _movies: MoviesApiService,
     private _router: Router,

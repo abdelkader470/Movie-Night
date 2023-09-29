@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MoviesApiService } from '../services/movies-api.service';
+import { Router } from '@angular/router';
+import { SearchService } from 'src/app/shared/search/services/search.service';
 
 @Component({
   selector: 'app-all-movies',
@@ -10,7 +12,12 @@ export class AllMoviesComponent {
   pages: number[] = [];
   pageNumber: number = 1;
   maxPages: number = 15;
-  constructor(private _movies: MoviesApiService) {}
+  searchKey: string = '';
+  constructor(
+    private _movies: MoviesApiService,
+    private _router: Router,
+    private _search: SearchService
+  ) {}
   allMovies: any[] = [];
   ngOnInit() {
     this.fetchData();
@@ -43,5 +50,10 @@ export class AllMoviesComponent {
       this.pageNumber++;
       this.fetchData();
     }
+  }
+
+  search() {
+    this._router.navigate(['search']);
+    this._search.setSearchKey(this.searchKey);
   }
 }

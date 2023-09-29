@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -18,9 +19,13 @@ export class SearchComponent {
   progress: any;
   inWatchlist = false;
 
-  constructor(private _MoviesService: MoviesApiService) {}
+  constructor(
+    private _MoviesService: MoviesApiService,
+    private _search: SearchService
+  ) {}
   ngOnInit() {
     this.fetchData();
+    this._search.getSearchKey().subscribe((data) => (this.term = data));
   }
 
   fetchData() {

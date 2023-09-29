@@ -9,23 +9,22 @@ import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
 export class SearchComponent {
   prefixImg: string = 'https://image.tmdb.org/t/p/w500/';
   trandingMovies: any[] = [];
-  pages: number[] = [];
   term: string = '';
+
+  pages: number[] = [];
   pageNumber: number = 1;
   maxPages: number = 15;
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
-
   progress: any;
   inWatchlist = false;
 
   constructor(private _MoviesService: MoviesApiService) {}
-
   ngOnInit() {
     this.fetchData();
   }
 
   fetchData() {
-    this._MoviesService.getMoviesPage(this.pageNumber).subscribe({
+    this._MoviesService.getMoviesList(this.pageNumber).subscribe({
       next: (res) => {
         this.trandingMovies = res.results;
         this.pages = new Array(Math.min(res.total_pages, this.maxPages))

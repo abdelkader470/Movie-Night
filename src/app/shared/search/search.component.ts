@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
 import { SearchService } from './services/search.service';
+import { Movie } from 'src/app/movies/iterface/movie';
 
 @Component({
   selector: 'app-search',
@@ -9,14 +10,14 @@ import { SearchService } from './services/search.service';
 })
 export class SearchComponent {
   prefixImg: string = 'https://image.tmdb.org/t/p/w500/';
-  trandingMovies: any[] = [];
+  trandingMovies: Movie[] = [];
   term: string = '';
 
   pages: number[] = [];
   pageNumber: number = 1;
   maxPages: number = 15;
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
-  progress: any;
+  progress: number = 0;
   inWatchlist = false;
 
   constructor(

@@ -10,7 +10,7 @@
     </div>
     <div
       *ngFor="let movie of trandingMovies | searchMovie : term"
-      class="col-md-2"
+      class="col-md-2 mt-3"
     >
       <app-movie-card [movie]="movie"> </app-movie-card>
     </div>

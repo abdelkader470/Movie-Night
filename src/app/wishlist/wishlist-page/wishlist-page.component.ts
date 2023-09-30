@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
 
@@ -7,8 +8,8 @@ import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
   styleUrls: ['./wishlist-page.component.css'],
 })
 export class WishlistPageComponent {
-  constructor(private _movieAPI: MoviesApiService) {}
-  myWishList:any[] = [];
+  constructor(private _movieAPI: MoviesApiService,private router:Router) {}
+  myWishList: any[] = [];
   ngOnInit() {
     this._movieAPI.showwishList().subscribe(
       (response) => {
@@ -21,5 +22,8 @@ export class WishlistPageComponent {
         // Handle the error here
       }
     );
+  }
+  gotohome(){
+this.router.navigate(['home'])
   }
 }

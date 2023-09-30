@@ -40,7 +40,6 @@ export class MovieCardComponent {
     this._movieAPI.addToWatchlist(movieId)
   }else{
     this._movieAPI.removeFromWatchlist(movieId)
-
   }
     }
   }

@@ -1,1 +1,42 @@
-<p>search works!</p>
+<div class="container">
+  <div class="row py-3 d-flex justify-content-center">
+    <div class="p-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="search by name .. "
+        [(ngModel)]="term"
+      />
+    </div>
+    <div
+      *ngFor="let movie of trandingMovies | searchMovie : term"
+      class="col-md-2"
+    >
+      <app-movie-card [movie]="movie"> </app-movie-card>
+    </div>
+  </div>
+  <div class="pagination d-flex justify-content-center mb-4">
+    <button
+      class="btn btn-outline-warning text-black me-2"
+      (click)="previousPage()"
+      [disabled]="pageNumber === 1"
+    >
+      Previous
+    </button>
+    <button
+      class="btn btn-outline-warning text-black me-2"
+      *ngFor="let page of pages"
+      (click)="show(page)"
+      [class.active]="page === pageNumber"
+    >
+      {{ page }}
+    </button>
+    <button
+      class="btn btn-outline-warning text-black"
+      (click)="nextPage()"
+      [disabled]="pageNumber === pages.length"
+    >
+      Next
+    </button>
+  </div>
+</div>

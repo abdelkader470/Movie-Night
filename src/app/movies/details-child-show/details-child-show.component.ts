@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesApiService } from '../services/movies-api.service';
+import { Movie } from '../iterface/movie';
 
 @Component({
   selector: 'app-details-child-show',
@@ -9,11 +10,42 @@ import { MoviesApiService } from '../services/movies-api.service';
 })
 export class DetailsChildShowComponent {
   movieID: number = 0;
-  movie: any;
-  recommendedMovies: any = [];
+  movie: Movie = {
+    adult: false,
+    backdrop_path: '',
+    belongs_to_collection: {
+      id: 0,
+      name: '',
+      poster_path: '',
+      backdrop_path: '',
+    },
+    budget: 0,
+    genres: [],
+    homepage: '',
+    id: 0,
+    imdb_id: '',
+    original_language: '',
+    original_title: '',
+    overview: '',
+    popularity: 0,
+    poster_path: '',
+    production_companies: [],
+    production_countries: [],
+    release_date: '',
+    revenue: 0,
+    runtime: 0,
+    spoken_languages: [],
+    status: '',
+    tagline: '',
+    title: '',
+    video: false,
+    vote_average: 0,
+    vote_count: 0,
+  };
+  recommendedMovies: Movie[] = [];
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
   inWatchlist = false;
-  myWishList: any[] = [];
+  myWishList: Movie[] = [];
   foundedwish!: any;
   constructor(
     private _link: ActivatedRoute,
@@ -40,19 +72,17 @@ export class DetailsChildShowComponent {
     this._movieAPI.recommendedMovies(this.movieID).subscribe((data: any) => {
       this.recommendedMovies = data.results;
     });
-    this._movieAPI.getMovieDetail(this.movieID).subscribe((data) => {
+    this._movieAPI.getMovieDetail(this.movieID).subscribe((data: any) => {
       this.movie = data;
     });
   }
 
   addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
-     if(this.inWatchlist){
-    this._movieAPI.addToWatchlist(movieId)
-  }else{
-    this._movieAPI.removeFromWatchlist(movieId)
-
-  }
+    if (this.inWatchlist) {
+      this._movieAPI.addToWatchlist(movieId);
+    } else {
+      this._movieAPI.removeFromWatchlist(movieId);
     }
   }
-
+}

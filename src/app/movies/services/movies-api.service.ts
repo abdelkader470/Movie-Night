@@ -33,7 +33,7 @@ export class MoviesApiService {
   getMovie() {
     return this.movie.asObservable();
   }
-  setMovie(movie: any) {
+  setMovie(movie: number) {
     this.movie.next(movie);
   }
   addToWatchlist(movieId: number) {

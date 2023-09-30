@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
+import { Movie } from 'src/app/movies/iterface/movie';
 
 @Component({
   selector: 'app-wishlist-card',
@@ -9,12 +10,16 @@ import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
   styleUrls: ['./wishlist-card.component.css'],
 })
 export class WishlistCardComponent {
-  @Input() wishlist!: any;
+  @Input() wishlist!: Movie;
   inWatchlist = false;
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
-  myWishList: any[] = [];
+  myWishList: Movie[] = [];
   foundedwish!: any;
-  constructor(private _router: Router, private _movieAPI: MoviesApiService ,private location:Location) {}
+  constructor(
+    private _router: Router,
+    private _movieAPI: MoviesApiService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     if (!this.inWatchlist) {
@@ -34,15 +39,14 @@ export class WishlistCardComponent {
     this._router.navigate(['movie', id]);
     this._movieAPI.setMovie(id);
   }
-  
+
   addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
     if (this.inWatchlist) {
       this._movieAPI.addToWatchlist(movieId);
     } else {
       this._movieAPI.removeFromWatchlist(movieId);
-      location.reload()
-      
-      }
+      location.reload();
+    }
   }
 }

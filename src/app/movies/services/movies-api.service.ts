@@ -62,7 +62,33 @@ export class MoviesApiService {
     );
   }
 
-  showwishList() :Observable<any>{
+  removeFromWatchlist(movieId: number) {
+    const url = 'https://api.themoviedb.org/3/account/20505794/watchlist'; // Replace with the appropriate URL
+    const body = {
+      media_type: 'movie',
+      media_id: movieId,
+      watchlist: false,
+    };
+
+    const headers = new HttpHeaders()
+      .set('Accept', 'application/json')
+      .set('Content-Type', 'application/json')
+      .set(
+        'Authorization',
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhN2YxY2U1ODUzNjdkMjIwNTE4YzIxYTA3NzA4OGIxMiIsInN1YiI6IjY1MTVlZWU5ZDQ2NTM3MDEwMDFiMWQ2NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Xiy3NtzMyacFesL7uRITqTDjyrlR-RAD7OIhpjGPqSk'
+      );
+
+    this._http.post(url, body, { headers }).subscribe(
+      (response) => {
+        console.log('Response:', response);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  showwishList(): Observable<any> {
     const url =
       'https://api.themoviedb.org/3/account/20505794/watchlist/movies'; // Replace with the appropriate URL
 
@@ -78,6 +104,6 @@ export class MoviesApiService {
       .set('page', '1')
       .set('sort_by', 'created_at.asc');
 
-  return  this._http.get(url, { headers, params });
+    return this._http.get(url, { headers, params });
   }
 }

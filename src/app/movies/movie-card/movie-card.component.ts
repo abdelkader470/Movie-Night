@@ -12,19 +12,35 @@ export class MovieCardComponent {
   @Input() movie: any;
   progress: any;
   inWatchlist = false;
-  accountId = 20496832 ;
+  myWishList :any[]=[]
+  foundedwish !:any
   constructor(private _router: Router, private _movieAPI: MoviesApiService) {}
   ngOnInit() {
     this.progress = this.movie.vote_average * 10;
+    if(!this.inWatchlist){
+      this._movieAPI.showwishList().subscribe(
+      (response) => {
+        console.log('Response:', response.results);
+        this.myWishList = response.results;
+        this.foundedwish=this.myWishList.find((res)=>res.id === this.movie.id)
+        if(this.foundedwish){
+          this.inWatchlist=true;
+        }
+      })
+    }
   }
   routingToDetails(id: number) {
     this._router.navigate(['movie', id]);
     this._movieAPI.setMovie(id);
   }
+  
   addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
     if(this.inWatchlist){
     this._movieAPI.addToWatchlist(movieId)
+  }else{
+    this._movieAPI.removeFromWatchlist(movieId)
+
   }
     }
   }

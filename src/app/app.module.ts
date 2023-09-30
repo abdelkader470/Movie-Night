@@ -5,18 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { MoviesModule } from './movies/movies.module';
-import { FormsModule } from '@angular/forms';
+import { WishlistModule } from './wishlist/wishlist.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    MoviesModule,
-
-    FormsModule,
-  ],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, MoviesModule ,WishlistModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,1 +1,7 @@
-
+<div class="container m-4">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let wish of myWishList">
+      <app-wishlist-card [wishlist]="wish"></app-wishlist-card>
+    </div>
+  </div>
+</div>

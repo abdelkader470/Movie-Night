@@ -12,6 +12,7 @@ export class MovieCardComponent {
   @Input() movie: any;
   progress: any;
   inWatchlist = false;
+  accountId = 20496832 ;
   constructor(private _router: Router, private _movieAPI: MoviesApiService) {}
   ngOnInit() {
     this.progress = this.movie.vote_average * 10;
@@ -20,7 +21,11 @@ export class MovieCardComponent {
     this._router.navigate(['movie', id]);
     this._movieAPI.setMovie(id);
   }
-  addToWatchList(movie: any) {
+  addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
+    if(this.inWatchlist){
+    this._movieAPI.addToWatchlist(movieId)
   }
-}
+    }
+  }
+

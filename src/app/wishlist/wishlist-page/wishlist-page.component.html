@@ -1,7 +1,16 @@
 <div class="container m-4">
-  <div class="row">
-    <div class="col-md-6" *ngFor="let wish of myWishList">
+  <div class="row" >
+    <div  *ngIf="myWishList.length<=0">
+      <div class="col-12 ">
+        <img class="nowish" src="../../../assets/images/empty-wishlist.svg" alt="">
+        <button  class="btn btn-outline-warning " (click)="gotohome()">add to wishlist</button>
+      </div>
+    </div>
+    <div *ngIf="myWishList.length>0">
+<div class="col-md-6" *ngFor="let wish of myWishList">
       <app-wishlist-card [wishlist]="wish"></app-wishlist-card>
     </div>
+    </div>
+    
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MoviesApiService } from '../services/movies-api.service';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/shared/search/services/search.service';
+import { Movie } from '../iterface/movie';
 
 @Component({
   selector: 'app-all-movies',
@@ -18,7 +19,7 @@ export class AllMoviesComponent {
     private _router: Router,
     private _search: SearchService
   ) {}
-  allMovies: any[] = [];
+  allMovies: Movie[] = [];
   ngOnInit() {
     this.fetchData();
   }

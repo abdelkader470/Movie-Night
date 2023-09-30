@@ -8,12 +8,12 @@ import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
 })
 export class WishlistPageComponent {
   constructor(private _movieAPI: MoviesApiService) {}
-myWishList =[]
-  ngOnInit(){
+  myWishList:any[] = [];
+  ngOnInit() {
     this._movieAPI.showwishList().subscribe(
       (response) => {
         console.log('Response:', response.results);
-        this.myWishList=response.results
+        this.myWishList = response.results;
         // Handle the successful response here
       },
       (error) => {

@@ -39,7 +39,6 @@
     (click)="routingToDetails(movie.id)"
   />
   <div class="card-content mt-3 mx-2">
-    <!-- I guess we can come up with abetter solution -->
     <circle-progress
       *ngIf="movie.vote_average >= 7.5"
       [percent]="progress"

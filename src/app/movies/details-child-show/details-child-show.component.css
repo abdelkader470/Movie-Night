@@ -28,7 +28,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 20px 0px;
+  padding: 0 !important;
+
   filter: blur(15px);
 }
 

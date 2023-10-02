@@ -8,9 +8,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MoviesApiService {
   private movie;
+  private whislist;
   foundedMovie!: any;
   constructor(private _http: HttpClient) {
     this.movie = new BehaviorSubject({});
+    this.whislist = new BehaviorSubject({});
   }
   getMoviesList(pageNumber: number): Observable<any> {
     return this._http.get(
@@ -33,8 +35,15 @@ export class MoviesApiService {
   getMovie() {
     return this.movie.asObservable();
   }
+
   setMovie(movie: number) {
     this.movie.next(movie);
+  }
+  getWhislist() {
+    return this.whislist.asObservable();
+  }
+  setWhislist(whislist: number) {
+    this.whislist.next(this.whislist);
   }
   addToWatchlist(movieId: number) {
     const url = 'https://api.themoviedb.org/3/account/20505794/watchlist'; // Replace with the appropriate URL

@@ -11,7 +11,7 @@ import { Movie } from 'src/app/movies/iterface/movie';
 })
 export class WishlistCardComponent {
   @Input() wishlist!: Movie;
-  inWatchlist = false;
+  inWatchlist = true;
   imgPrefex = 'https://image.tmdb.org/t/p/w500/';
   myWishList: Movie[] = [];
   foundedwish!: any;
@@ -22,18 +22,7 @@ export class WishlistCardComponent {
   ) {}
 
   ngOnInit() {
-    if (!this.inWatchlist) {
-      this._movieAPI.showwishList().subscribe((response) => {
-        console.log('Response:', response.results);
-        this.myWishList = response.results;
-        this.foundedwish = this.myWishList.find(
-          (res) => res.id === this.wishlist.id
-        );
-        if (this.foundedwish) {
-          this.inWatchlist = true;
-        }
-      });
-    }
+    
   }
   routingToDetails(id: number) {
     this._router.navigate(['movie', id]);
@@ -42,11 +31,9 @@ export class WishlistCardComponent {
 
   addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
-    if (this.inWatchlist) {
-      this._movieAPI.addToWatchlist(movieId);
-    } else {
+  
       this._movieAPI.removeFromWatchlist(movieId);
       location.reload();
-    }
+    
   }
 }

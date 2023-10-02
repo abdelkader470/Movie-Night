@@ -8,14 +8,14 @@ import { WishlistPageComponent } from './wishlist/wishlist-page/wishlist-page.co
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: AllMoviesComponent },
+  { path: 'home', component: AllMoviesComponent, title: 'Move Night' },
   {
     path: 'movie/:id',
     component: MovieDetailsComponent,
   },
-  { path: 'wishlist', component: WishlistPageComponent },
-  { path: 'search', component: SearchComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: 'wishlist', component: WishlistPageComponent, title: 'My Wishlist' },
+  { path: 'search', component: SearchComponent, title: 'Search' },
+  { path: '**', component: NotFoundComponent, title: '404 NotFound' },
 ];
 
 @NgModule({

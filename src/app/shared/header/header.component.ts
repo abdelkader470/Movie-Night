@@ -15,12 +15,12 @@ export class HeaderComponent {
     this._movieAPI.getcounter().subscribe((data)=>{
       this.counter =data
     })
-    console.log('Initial counter value:', this.counter);
+
 
     this.counterSubscription = this._movieAPI.counterChanged.subscribe(
       (newCounter: number) => {
         this.counter = newCounter;
-        console.log('Updated counter value:', this.counter);
+    
       }
     );
   }

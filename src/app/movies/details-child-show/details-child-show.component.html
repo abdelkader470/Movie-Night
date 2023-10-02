@@ -8,6 +8,7 @@
     <div class="row details-contianer" style="position: relative">
       <div
         class="background"
+        *ngIf="movie.backdrop_path"
         [ngStyle]="{
           'background-image': 'url(' + imgPrefex + movie.backdrop_path + ')',
           filter: 'blur(10px)',

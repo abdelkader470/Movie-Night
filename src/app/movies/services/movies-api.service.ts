@@ -14,11 +14,11 @@ export class MoviesApiService {
   private counter;
   constructor(private _http: HttpClient) {
     this.movie = new BehaviorSubject({});
-<<<<<<< HEAD
+
     this.counter = new BehaviorSubject<number>(0);
-=======
+
     this.whislist = new BehaviorSubject({});
->>>>>>> bf3f31db076e8e69c7200adf66215aa73caf8b5d
+
   }
   getMoviesList(pageNumber: number): Observable<any> {
     return this._http.get(
@@ -41,16 +41,14 @@ export class MoviesApiService {
   getMovie() {
     return this.movie.asObservable();
   }
-<<<<<<< HEAD
+
   setCounter(counter: number) {
     this.counter.next(counter);
   }
   getcounter() {
     return this.counter.asObservable();
   }
-=======
 
->>>>>>> bf3f31db076e8e69c7200adf66215aa73caf8b5d
   setMovie(movie: number) {
     this.movie.next(movie);
   }

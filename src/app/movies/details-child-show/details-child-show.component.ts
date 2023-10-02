@@ -9,6 +9,7 @@ import { Movie } from '../iterface/movie';
   styleUrls: ['./details-child-show.component.css'],
 })
 export class DetailsChildShowComponent {
+  counter!: number;
   movieID: number = 0;
   movie: Movie = {
     adult: false,
@@ -53,9 +54,11 @@ export class DetailsChildShowComponent {
   ) {}
   @Input() changed: number = 0;
   ngOnInit() {
+    this._movieAPI.getcounter().subscribe((data) => {
+      this.counter = data;
+    });
     if (!this.inWatchlist) {
       this._movieAPI.showwishList().subscribe((response) => {
-        console.log('Response:', response.results);
         this.myWishList = response.results;
         this.foundedwish = this.myWishList.find(
           (res) => res.id === this.movie.id
@@ -64,6 +67,7 @@ export class DetailsChildShowComponent {
           this.inWatchlist = true;
         }
       });
+      
     }
   }
   ngOnChanges() {
@@ -79,10 +83,15 @@ export class DetailsChildShowComponent {
 
   addToWatchList(movieId: number) {
     this.inWatchlist = !this.inWatchlist;
+    
     if (this.inWatchlist) {
       this._movieAPI.addToWatchlist(movieId);
+      this.counter++
+      this._movieAPI.setCounter(this.counter);
     } else {
       this._movieAPI.removeFromWatchlist(movieId);
+      this.counter--
+      this._movieAPI.setCounter(this.counter);
     }
   }
 }

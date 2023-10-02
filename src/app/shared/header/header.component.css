@@ -8,3 +8,19 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.logo{
+  width: 7%;
+}
+
+image{
+   padding: 0;
+  margin: 0;
+}
+.wishicon{
+  position: absolute;
+  top:5px;
+ 
+  font-size: 10px !important;
+  padding: 2px;
+}

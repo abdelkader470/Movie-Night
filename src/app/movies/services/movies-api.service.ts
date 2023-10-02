@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,9 +11,14 @@ export class MoviesApiService {
   private movie;
   private whislist;
   foundedMovie!: any;
+  private counter;
   constructor(private _http: HttpClient) {
     this.movie = new BehaviorSubject({});
+
+    this.counter = new BehaviorSubject<number>(0);
+
     this.whislist = new BehaviorSubject({});
+
   }
   getMoviesList(pageNumber: number): Observable<any> {
     return this._http.get(
@@ -34,6 +40,13 @@ export class MoviesApiService {
 
   getMovie() {
     return this.movie.asObservable();
+  }
+
+  setCounter(counter: number) {
+    this.counter.next(counter);
+  }
+  getcounter() {
+    return this.counter.asObservable();
   }
 
   setMovie(movie: number) {
@@ -115,4 +128,15 @@ export class MoviesApiService {
 
     return this._http.get(url, { headers, params });
   }
+  counterChanged = new Subject<number>();
+  myWishList!: any[];
+
+  // incrementCounter() {
+  //   this.counter.;
+  //   this.counterChanged.next(this.counter);
+  // }
+  // decrementCounter() {
+  //   this.counter--;
+  //   this.counterChanged.next(this.counter);
+  // }
 }

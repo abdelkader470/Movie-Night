@@ -18,11 +18,25 @@ export class AllMoviesComponent {
     private _movies: MoviesApiService,
     private _router: Router,
     private _search: SearchService
-  ) {}
-  allMovies: Movie[] = [];
-  ngOnInit() {
-    this.fetchData();
-  }
+    ) {}
+    allMovies: Movie[] = [];
+    myWishList: Movie[] = [];
+    counter!: number;
+    
+    ngOnInit() {
+      this.fetchData();
+       this._movies.showwishList().subscribe({
+        next: (response) => {
+           this.myWishList = response.results;
+           this.counter = this.myWishList.length;
+           this._movies.setCounter(this.counter);
+           
+          },
+         
+        });
+         
+    }
+    
   fetchData() {
     this._movies.getMoviesList(this.pageNumber).subscribe({
       next: (res) => {
@@ -57,4 +71,8 @@ export class AllMoviesComponent {
     this._router.navigate(['search']);
     this._search.setSearchKey(this.searchKey);
   }
+
+
+  
+
 }

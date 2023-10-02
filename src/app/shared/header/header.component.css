@@ -10,7 +10,10 @@ a {
 }
 
 .logo{
-  width: 7%;
+  
+  padding: 3px;
+   border: 1px rgb(3, 3, 3) dashed;
+   border-radius: 5px;
 }
 
 image{
@@ -23,4 +26,10 @@ image{
  
   font-size: 10px !important;
   padding: 2px;
+}
+.active-link{
+  color: rgba(0, 0, 0, 0.95);
+  font-weight: 600;
+    text-shadow: 2px 2px 15px  #060606;  
+    
 }

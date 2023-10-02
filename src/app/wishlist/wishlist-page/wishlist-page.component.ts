@@ -14,7 +14,6 @@ export class WishlistPageComponent {
   ngOnInit() {
     this._movieAPI.showwishList().subscribe(
       (response) => {
-        console.log('Response:', response.results);
         this.myWishList = response.results;
         this._movieAPI.setCounter(this.myWishList.length)
       },

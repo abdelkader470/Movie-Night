@@ -72,9 +72,10 @@ export class DetailsChildShowComponent {
   }
   ngOnChanges() {
     this.movieID = this._link.snapshot.params['id'];
-
     this._movieAPI.recommendedMovies(this.movieID).subscribe((data: any) => {
       this.recommendedMovies = data.results;
+     
+
     });
     this._movieAPI.getMovieDetail(this.movieID).subscribe((data: any) => {
       this.movie = data;

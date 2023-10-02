@@ -14,7 +14,7 @@ export class SearchService {
   getSearchKey() {
     return this.searchKey.asObservable();
   }
-  setSearchKey(movie: any) {
+  setSearchKey(movie: string) {
     this.searchKey.next(movie);
   }
 }

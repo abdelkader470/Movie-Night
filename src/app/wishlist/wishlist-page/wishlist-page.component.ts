@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
+import { Movie } from 'src/app/movies/iterface/movie';
 
 @Component({
   selector: 'app-wishlist-page',
@@ -8,8 +9,8 @@ import { MoviesApiService } from 'src/app/movies/services/movies-api.service';
   styleUrls: ['./wishlist-page.component.css'],
 })
 export class WishlistPageComponent {
-  constructor(private _movieAPI: MoviesApiService,private router:Router) {}
-  myWishList: any[] = [];
+  constructor(private _movieAPI: MoviesApiService, private router: Router) {}
+  myWishList: Movie[] = [];
   ngOnInit() {
     this._movieAPI.showwishList().subscribe(
       (response) => {
@@ -22,7 +23,7 @@ export class WishlistPageComponent {
       }
     );
   }
-  gotohome(){
-this.router.navigate(['home'])
+  gotohome() {
+    this.router.navigate(['home']);
   }
 }

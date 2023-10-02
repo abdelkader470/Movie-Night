@@ -52,7 +52,7 @@ export class DetailsChildShowComponent {
     private _link: ActivatedRoute,
     private _movieAPI: MoviesApiService
   ) {}
-  @Input() changed: any;
+  @Input() changed: number = 0;
   ngOnInit() {
     this._movieAPI.getcounter().subscribe((data) => {
       this.counter = data;

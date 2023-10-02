@@ -8,10 +8,10 @@ import { MoviesApiService } from '../services/movies-api.service';
   styleUrls: ['./movie-details.component.css'],
 })
 export class MovieDetailsComponent {
-  changed: any;
+  changed: number = 0;
   constructor(private _movieAPI: MoviesApiService) {}
   ngOnInit() {
-    this._movieAPI.getMovie().subscribe((data) => {
+    this._movieAPI.getMovie().subscribe((data: any) => {
       this.changed = data;
     });
   }

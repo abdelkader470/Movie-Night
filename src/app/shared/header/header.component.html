@@ -1,14 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-custom">
   <div class="container-fluid">
-    <div>
-      <a class="navbar-brand" routerLink="home">Movie-App</a>
-      <a routerLink="search"
+    
+      <a class="navbar-brand" routerLink="home">Movie Night</a>
+     
+    <div class="d-flex" role="search">
+       <a routerLink="search" class="me-2"
         ><i class="fa-solid fa-search" style="color: #000000"></i
       ></a>
-    </div>
-    <div class="d-flex" role="search">
-      <a routerLink="wishlist"
-        ><i class="fa-solid fa-heart" style="color: #000000"></i
+      <a routerLink="wishlist" class="position-relative"
+        ><i class="fa-solid fa-heart " style="color: #000000">
+            <span class="wishicon translate-middle badge rounded-pill bg-dark text-warning">
+      {{counter}}
+    
+  </span>
+          </i
         ><span class="ms-2">Wishlist</span></a
       >
     </div>

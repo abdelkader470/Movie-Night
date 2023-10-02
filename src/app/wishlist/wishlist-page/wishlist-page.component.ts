@@ -15,11 +15,10 @@ export class WishlistPageComponent {
       (response) => {
         console.log('Response:', response.results);
         this.myWishList = response.results;
-        // Handle the successful response here
+        this._movieAPI.setCounter(this.myWishList.length)
       },
       (error) => {
         console.error('Error:', error);
-        // Handle the error here
       }
     );
   }
